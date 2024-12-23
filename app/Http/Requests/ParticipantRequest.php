@@ -34,7 +34,7 @@ class ParticipantRequest extends FormRequest
             'state' => 'required|string|min:2|max:2',
             'number' => 'required|string|min:1|max:15',
             'postalcode' => 'required|numeric|digits:8',
-            'complement' => 'nulllable|string|max:155',
+            'complement' => 'nullable|string|max:155',
             'note' => 'nullable|string',
             'birthdate' => 'required|date',
             'access_code' => 'required|string|exists:access_codes,access_code',
