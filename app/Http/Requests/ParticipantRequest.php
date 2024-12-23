@@ -31,7 +31,7 @@ class ParticipantRequest extends FormRequest
             'address' => 'required|string|max:255',
             'birthdate' => 'required|date',
             'access_code' => 'required|string|exists:access_codes,access_code',
-            'document_type' => 'required|string|in:CPF,CNPJ',
+            'document_type' => 'required|string|in:cpf,cnpj',
             'document' => [
                 'required',
                 'string',
@@ -52,11 +52,11 @@ class ParticipantRequest extends FormRequest
                     }
 
                     // Validação específica de CPF ou CNPJ
-                    if ($type === 'CPF' && !CpfValidator::isValid($document)) {
+                    if ($type === 'cpf' && !CpfValidator::isValid($document)) {
                         $fail("O CPF informado não é válido.");
                     }
 
-                    if ($type === 'CNPJ' && !CnpjValidator::isValid($document)) {
+                    if ($type === 'cnpj' && !CnpjValidator::isValid($document)) {
                         $fail("O CNPJ informado não é válido.");
                     }
                 },

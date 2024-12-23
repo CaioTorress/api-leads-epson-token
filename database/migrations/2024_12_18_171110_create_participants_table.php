@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('document')->unique();
             $table->date('birthdate');
             $table->string('access_code');
-            $table->enum('document_type', ['CPF','CNPJ']);
+            $table->enum('document_type', ['cpf','cnpj']);
             $table->timestamps();
         });
     }
