@@ -22,6 +22,7 @@ class AccessCodeController extends Controller
 
         AccessCode::create([
             'access_code' => $request->access_code,
+            'document' => $request->document,
         ]);
 
         return response()->json(['message' => 'Token armazenado com sucesso.'], 201);
