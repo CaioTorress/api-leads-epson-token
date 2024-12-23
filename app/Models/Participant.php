@@ -17,7 +17,6 @@ class Participant extends Model
         'name',
         'email',
         'address',
-        'postalcode',
         'city',
         'district',
         'state',
