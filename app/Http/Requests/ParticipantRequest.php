@@ -29,9 +29,9 @@ class ParticipantRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:participants',
             'address' => 'required|string|max:255',
-            'birth_date' => 'required|date',
+            'birthdate' => 'required|date',
             'access_code' => 'required|string|exists:access_codes,access_code',
-            'type' => 'required|string|in:CPF,CNPJ',
+            'document_type' => 'required|string|in:CPF,CNPJ',
             'document' => [
                 'required',
                 'string',

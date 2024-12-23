@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('complement')->nullable();
             $table->string('note')->nullable();
             $table->string('document')->unique();
-            $table->date('birth_date');
+            $table->date('birthdate');
             $table->string('access_code');
-            $table->enum('type', ['CPF','CNPJ']);
+            $table->enum('document_type', ['CPF','CNPJ']);
             $table->timestamps();
         });
     }
