@@ -11,6 +11,7 @@ class AccessCode extends Model
 
     protected $fillable = [
         'access_code',
+        'document',
         'registration_count'
     ];
 

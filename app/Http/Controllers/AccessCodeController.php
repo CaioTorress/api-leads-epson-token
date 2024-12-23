@@ -17,6 +17,7 @@ class AccessCodeController extends Controller
     {
         $request->validate([
             'access_code' => 'required|string|unique:access_codes',
+            'document' => 'required|string|',
         ]);
 
         AccessCode::create([

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('access_codes', function (Blueprint $table) {
             $table->id();
             $table->string('access_code');
+            $table->string('document');
             $table->unsignedInteger('registration_count')->default(0);
             $table->timestamps();
         });
