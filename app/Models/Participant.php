@@ -24,7 +24,7 @@ class Participant extends Model
         'postalcode',
         'number',
         'document',
-        'birth_date',
+        'birthdate',
         'access_code',
         'type'
     ];
