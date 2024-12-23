@@ -11,26 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
-    protected $luckyNumberService;
-
-    public function __construct(GenerateLuckyNumberService $luckyNumberService)
-    {
-        $this->luckyNumberService = $luckyNumberService;
-    }
-
     public function register(RegisterRequest $request)
     {
-        // Verifica o código de acesso
-        $accessCode = AccessCode::where('email', $request->email)
-                                ->where('access_code', $request->access_code)
-                                ->first();
+        // Verifica o token
+        $accessCode = AccessCode::where('access_code', $request->access_code)->first();
 
         if (!$accessCode) {
-            return response()->json(['message' => 'Código de acesso inválido.'], 422);
+            return response()->json(['message' => 'Token inválido.'], 422);
         }
-
-        // Gera o lucky number
-        $luckyNumber = $this->luckyNumberService->generateUniqueCode(7);
 
         // Cria o participante
         $participant = Participant::create([
@@ -39,9 +27,26 @@ class RegistrationController extends Controller
             'address' => $request->address,
             'access_code' => $request->access_code,
             'password' => Hash::make($request->password),
-            'lucky_number' => $luckyNumber,
+            'lucky_number' => $this->generateLuckyNumber(7), // Gera lucky number aqui
         ]);
 
-        return response()->json(['message' => 'Registro realizado com sucesso.', 'lucky_number' => $luckyNumber], 201);
+        return response()->json(['message' => 'Registro realizado com sucesso.'], 201);
+    }
+
+    /**
+     * Gera um lucky number único.
+     *
+     * @param int $digits
+     * @return string
+     */
+    protected function generateLuckyNumber(int $digits): string
+    {
+        do {
+            $min = (int) str_repeat('1', $digits);
+            $max = (int) str_repeat('9', $digits);
+            $randomNumber = (string) random_int($min, $max);
+        } while (Participant::where('lucky_number', $randomNumber)->exists());
+
+        return $randomNumber;
     }
 }

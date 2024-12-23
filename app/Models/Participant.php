@@ -17,9 +17,10 @@ class Participant extends Model
         'name',
         'email',
         'address',
+        'document',
+        'birth_date',
         'access_code',
-        'password',
-        'lucky_number',
+        'type'
     ];
 
     /**

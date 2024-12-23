@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('address');
+            $table->string('document')->unique();
+            $table->date('birth_date');
             $table->string('access_code');
-            $table->string('password');
-            $table->string('lucky_number')->unique()->nullable();
+            $table->enum('type', ['CPF','CNPJ']);
             $table->timestamps();
         });
     }

@@ -10,12 +10,12 @@ class AccessCode extends Model
     use HasFactory;
 
     protected $fillable = [
-        'email',
-        'access_code'
+        'access_code',
+        'registration_count'
     ];
 
-    public function participant()
+    public function canRegister(): bool
     {
-        return $this->hasOne(Participant::class, 'email', 'email');
+        return $this->registration_count < 5;
     }
 }
