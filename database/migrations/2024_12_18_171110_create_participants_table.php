@@ -15,7 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('postalcode');
             $table->string('address');
+            $table->string('city');
+            $table->string('district');
+            $table->string('state');
+            $table->string('number');
+            $table->string('complement')->nullable();
+            $table->string('note')->nullable();
             $table->string('document')->unique();
             $table->date('birth_date');
             $table->string('access_code');
