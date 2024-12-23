@@ -72,7 +72,7 @@ class ParticipantController extends Controller
         return response()->json([
             'message' => 'Participante cadastrado com sucesso.',
             'participant' => $participant,
-        ], 201);
+        ], 200);
     }
 
     /**
