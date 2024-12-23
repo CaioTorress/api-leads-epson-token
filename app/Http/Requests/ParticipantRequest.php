@@ -36,7 +36,7 @@ class ParticipantRequest extends FormRequest
             'postalcode' => 'required|numeric|digits:8',
             'complement' => 'nullable|string|max:155',
             'note' => 'nullable|string',
-            'birthdate' => 'required|date',
+            'birthdate' => 'nullable|date',
             'access_code' => 'required|string|exists:access_codes,access_code',
             'document_type' => 'required|string|in:cpf,cnpj',
             'document' => [
